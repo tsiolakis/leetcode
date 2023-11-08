@@ -1,0 +1,16 @@
+class Solution {
+public:
+    double champagneTower(int poured, int query_row, int query_glass) {
+        vector<vector<double>> towerstate(100,vector<double>(100));
+        towerstate[0][0] = poured;
+        for(int i = 0; i < 99; ++i)
+            for(int j = 0; j <= i; ++j)
+                if(towerstate[i][j] > 1){
+                    double drop = towerstate[i][j] - 1;
+                    towerstate[i][j] = 1;
+                    towerstate[i + 1][j] += drop / 2;
+                    towerstate[i + 1][j + 1] += drop / 2;
+                }
+        return towerstate[query_row][query_glass];
+    }
+};

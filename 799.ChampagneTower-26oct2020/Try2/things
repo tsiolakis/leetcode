@@ -1,0 +1,22 @@
+int min = 0;
+int max = 0;
+for (int i = 0; i < query_row+1; i++) {
+    if (i <= kj)
+        max = i;
+    else
+        max = kj;
+    if (i <= ki - kj)
+        min = 0;
+    else
+        min = kj + i - ki;
+    n[i] = vector<double>(max-min +1);
+    for (int j = 0; j < n[i].size(); j++) {
+        n[i][j] = 0;
+    }
+}
+for (int i = 0; i < query_row+1; i++) {
+    n[i] = vector<double>(i+1);
+    for (int j = 0; j < i+1; j++) {
+        n[i][j] = 0;
+    }
+}
